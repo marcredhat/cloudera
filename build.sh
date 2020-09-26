@@ -6,7 +6,7 @@ buildah run $cdpcontainermarc git clone https://github.com/carrossoni/CDPDCTrial
 
 buildah config --cmd /bin/bash ${cdpcontainermarc} && \
 
-buildah run $cdpcontainermarc -- sh -c "git clone https://github.com/carrossoni/CDPDCTrial/" && \
+buildah run $cdpcontainermarc -- sh -c "git clone https://github.com/marcredhat/CDPDCTrial/" && \
 
 buildah run $cdpcontainermarc -- sh -c "chmod +x ./CDPDCTrial/centosvmCDP.sh" && \
 
