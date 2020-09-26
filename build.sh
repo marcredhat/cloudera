@@ -2,7 +2,7 @@ cdpcontainermarc=$(buildah from registry.centos.org/centos/centos:latest)
 #export CONTAINER_FS=$(buildah mount)
 buildah run $cdpcontainermarc yum update -y && \
 buildah run $cdpcontainermarc yum  install git udisks2 -y && \
-buildah run $cdpcontainermarc git clone https://github.com/mchisine/CDPDCTrial/
+
 
 buildah config --cmd /bin/bash ${cdpcontainermarc} && \
 
