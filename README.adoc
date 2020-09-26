@@ -1,0 +1,91 @@
+
+== Run Cloudera trial environment in a dockerless container using podman
+
+Based on https://github.com/carrossoni/CDPDCTrial/
+
+----
+Intro
+----
+
+----
+Build the awx-cli container using buildah:
+ubicontainer=$(buildah from registry.access.redhat.com/ubi8/ubi-minimal:latest)
+export CONTAINER_FS=$(buildah mount)
+buildah run $ubicontainer microdnf update -y && \
+buildah run $ubicontainer microdnf  install python3-pip -y && \
+buildah run $ubicontainer  pip3 install https://releases.ansible.com/ansible-tower/cli/ansible-tower-cli-latest.tar.gz && \
+buildah config --cmd /bin/bash ${ubicontainer} && \
+buildah run $ubicontainer -- sh -c "awx --help"
+----
+
+
+----
+buildah containers
+CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
+264060d4de76     *     91d23a64fdf2 registry.access.redhat.com/ub... ubi-minimal-working-container-3
+----
+
+----
+buildah commit ubi-minimal-working-container-3 ubiawx
+----
+
+----
+buildah images
+localhost/ubiawx
+----
+
+----
+podman  login -u="<quay user>" -p="<your quay token>" quay.io
+
+podman push localhost/ubiawx quay.io/marcf5/ubiawx
+----
+
+
+----
+oc create secret docker-registry staging-secret \
+    --docker-server=quay.io \
+    --docker-username=<quay user> \
+    --docker-password='<quay user token>' \
+    --docker-email='<quay user email>' \
+    --dry-run -o yaml > secret
+----
+
+----
+oc create -f secret
+----
+
+
+----
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: awxsa
+imagePullSecrets:
+  - name: staging-secret
+----
+
+
+----
+oc create secret generic tower-creds \
+         --from-literal=password=admin \
+         --from-literal=username=password \
+         --from-literal=PASS=admin \
+         --from-literal=USER=password \
+         --type=kubernetes.io/basic-auth
+----
+
+
+----
+oc create -f https://raw.githubusercontent.com/marcredhat/awxcli/master/ansible-tower-cli-task.yaml
+----
+
+
+----
+oc create -f https://raw.githubusercontent.com/marcredhat/awxcli/master/ansible-tower-cli-taskrun.yaml
+----
+
+----
+If you want test outside Tekton:
+podman run -it quay.io/marcf5/ubiawx /bin/bash
+awx -k --conf.host "https://<Ansible Tower server>"  --conf.username "admin" --conf.password "password" --conf.insecure  workflow_job_templates launch "<Ansible Tower workflow"
+----
