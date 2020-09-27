@@ -16,7 +16,7 @@ podman to run it
 
 See https://www.cloudera.com/products/cloudera-data-platform/cdp-private-cloud.html
 
-image:images/cloudera1.png[title="Cloudera 1"]
+image:images/cloudera3.png[title="Cloudera 3"]
 
 ----
 The trial environment also includes a  wizard that provides 
