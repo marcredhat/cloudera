@@ -7,7 +7,14 @@ Based on https://github.com/carrossoni/CDPDCTrial/
 We'll use 
 buildah to create the Cloudera trial environment container and
 podman to run it
+----
 
+image:images/cloudera1.png[title="Cloudera 1"]
+
+image:images/cloudera2.png[title="Cloudera 2"]
+
+
+----
 Buildah is a command-line tool for building Open Container Initiative-compatible 
 (that means Docker- and Kubernetes-compatible, too) images quickly and easily. 
 Buildah is easy to incorporate into scripts and build pipelines and 
