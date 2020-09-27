@@ -6,14 +6,14 @@
 Based on https://github.com/carrossoni/CDPDCTrial/
 
 ----
-We'll use buildah 
-to create the Cloudera CDP Private Cloud Base 
+We'll use 
+buildah to create the Cloudera CDP Private Cloud Base 
 (formerly known as CDP Data Center)
 trial environment container 
 
 and
 
-podman to run it
+podman to run the Cloudera CDP Private Cloud Base container
 ----
 
 See https://www.cloudera.com/products/cloudera-data-platform/cdp-private-cloud.html
