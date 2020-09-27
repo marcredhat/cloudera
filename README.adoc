@@ -1,5 +1,5 @@
 
-== 1. Build and run a Cloudera trial environment in a dockerless container
+== 1. Build and run a Cloudera CDP Private Cloud Base (formerly known as CDP Data Center) trial environment in a dockerless container
 
 == 2. Automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML on your laptop, virtual machine or baremetal server using CodeReady Containers
 
