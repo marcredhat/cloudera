@@ -77,6 +77,8 @@ Examples:
 
 [root@6de36c33185f /]# find / -name create_cluster.py
 /CDPDCTrial/scripts/create_cluster.py
+
+[root@6de36c33185f /]# python /CDPDCTrial/scripts/create_cluster.py /CDPDCTrial/conf/cdpsandbox.json
 ----
 
 ----
