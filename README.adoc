@@ -20,72 +20,50 @@ The buildah script to create the container is at https://github.com/marcredhat/c
 
 
 ----
-buildah containers
-CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
-264060d4de76     *     91d23a64fdf2 registry.access.redhat.com/ub... ubi-minimal-working-container-3
+Let's have a look at the container created by the script above
+
+sudo buildah containers
+#CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
+#ed92c18b5b99     *     f142359e2130 registry.centos.org/centos/centos:latest centos-working-container-1
 ----
 
 ----
-buildah commit ubi-minimal-working-container-3 ubiawx
+Commit the container to a new image
+
+sudo buildah commit centos-working-container-1 marccdp
 ----
 
 ----
-buildah images
-localhost/ubiawx
+Publish the container to your favorite registry
+
+sudo podman  login -u="<quay.io user>" -p="<quay.io encrypted password>" quay.io
+sudo  podman push localhost/marccdp  quay.io/marcf5/marccdp
 ----
 
-----
-podman  login -u="<quay user>" -p="<your quay token>" quay.io
+#sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp2 localhost/marccdp:latest /sbin/init
+#sudo podman run --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /sbin/init
 
-podman push localhost/ubiawx quay.io/marcf5/ubiawx
-----
+#sudo podman ps -a 
+#sudo podman exec -it marccdp /bin/bash
 
+#systemctl start cloudera-scm-server
 
-----
-oc create secret docker-registry staging-secret \
-    --docker-server=quay.io \
-    --docker-username=<quay user> \
-    --docker-password='<quay user token>' \
-    --docker-email='<quay user email>' \
-    --dry-run -o yaml > secret
-----
-
-----
-oc create -f secret
-----
+#[root@6de36c33185f /]# find / -name create_cluster.py
+#/CDPDCTrial/scripts/create_cluster.py
 
 
-----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: awxsa
-imagePullSecrets:
-  - name: staging-secret
-----
 
+#su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+#su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
 
-----
-oc create secret generic tower-creds \
-         --from-literal=password=admin \
-         --from-literal=username=password \
-         --from-literal=PASS=admin \
-         --from-literal=USER=password \
-         --type=kubernetes.io/basic-auth
-----
+#sudo podman exec -it marccdp /bin/bash
 
+#ss -anpt | grep java | grep LISTEN
+#LISTEN     0      50           *:7180                     *:*                   users:(("java",pid=14718,fd=400))
+#LISTEN     0      50           *:7182                     *:*                   users:(("java",pid=14718,fd=392))
 
-----
-oc create -f https://raw.githubusercontent.com/marcredhat/awxcli/master/ansible-tower-cli-task.yaml
-----
-
-
-----
-oc create -f https://raw.githubusercontent.com/marcredhat/awxcli/master/ansible-tower-cli-taskrun.yaml
-----
-
-----
-If you want test outside Tekton:
-podman run -it quay.io/marcf5/ubiawx /bin/bash
-awx -k --conf.host "https://<Ansible Tower server>"  --conf.username "admin" --conf.password "password" --conf.insecure  workflow_job_templates launch "<Ansible Tower workflow"
-----
+#systemctl status cloudera-scm-agent
+#systemctl status cloudera-scm-server 
+#curl -u "admin:admin"  http://127.0.0.1:7180/api/version
+#v41
+# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
