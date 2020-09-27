@@ -1,13 +1,14 @@
-cdpcontainermarc=$(buildah from registry.centos.org/centos/centos:latest)
-#export CONTAINER_FS=$(buildah mount)
-buildah run $cdpcontainermarc yum update -y && \
-buildah run $cdpcontainermarc yum  install git udisks2 -y && \
+podmancdp=$(buildah from registry.centos.org/centos/centos:latest)
+CONTAINER_FS=$(buildah mount $podmancdp)
+buildah run $podmancdp yum update -y && \
+buildah run $podmancdp yum  install  sudo git udisks2 -y && \
 
 
-buildah config --cmd /bin/bash ${cdpcontainermarc} && \
+buildah config  --cmd /bin/bash ${podmancdp}  && \
 
-buildah run $cdpcontainermarc -- sh -c "git clone https://github.com/marcredhat/CDPDCTrial/" && \
+buildah config --port 7180 ${podmancdp}  && \
 
-buildah run $cdpcontainermarc -- sh -c "chmod +x ./CDPDCTrial/centosvmCDP.sh" && \
-
-buildah run $cdpcontainermarc -- sh -c "./CDPDCTrial/centosvmCDP.sh"
+buildah run $podmancdp -- sh -c "git clone https://github.com/marcredhat/CDPDCTrial/; \
+cd CDPDCTrial; \
+chmod +x ./centosvmCDP.sh; \
+./centosvmCDP.sh"
