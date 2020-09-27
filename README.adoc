@@ -23,8 +23,8 @@ The buildah script to create the container is at https://github.com/marcredhat/c
 Let's have a look at the container created by the script above
 
 sudo buildah containers
-#CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
-#ed92c18b5b99     *     f142359e2130 registry.centos.org/centos/centos:latest centos-working-container-1
+CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
+ed92c18b5b99     *     f142359e2130 registry.centos.org/centos/centos:latest centos-working-container-1
 ----
 
 ----
@@ -64,37 +64,37 @@ sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp lo
 ----
 
 ----
+We can now connect to the Cloudera trial environment container and
+configure databases, enable service etc
+as shown at https://github.com/marcredhat/CDPDCTrial/blob/master/centosvmCDP.sh
+
 sudo podman exec -it marccdp /bin/bash
+
+Examples:
+[root@6de36c33185f /]# systemctl start cloudera-scm-server
+[root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+[root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
+
+[root@6de36c33185f /]# find / -name create_cluster.py
+/CDPDCTrial/scripts/create_cluster.py
 ----
 
 ----
-systemctl start cloudera-scm-server
-
-#[root@6de36c33185f /]# find / -name create_cluster.py
-#/CDPDCTrial/scripts/create_cluster.py
+[root@6de36c33185f /]# ss -anpt | grep java | grep LISTEN
+LISTEN     0      50           *:7180                     *:*                   users:(("java",pid=14718,fd=400))
+LISTEN     0      50           *:7182                     *:*                   users:(("java",pid=14718,fd=392))
 ----
 
 ----
-#su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
-#su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
+[root@6de36c33185f /]# systemctl status cloudera-scm-agent
+[root@6de36c33185f /]# systemctl status cloudera-scm-server 
 ----
 
 ----
-ss -anpt | grep java | grep LISTEN
-#LISTEN     0      50           *:7180                     *:*                   users:(("java",pid=14718,fd=400))
-#LISTEN     0      50           *:7182                     *:*                   users:(("java",pid=14718,fd=392))
-----
-
-----
-systemctl status cloudera-scm-agent
-systemctl status cloudera-scm-server 
-----
-
-----
-curl -u "admin:admin"  http://127.0.0.1:7180/api/version
+[root@6de36c33185f /]# curl -u "admin:admin"  http://127.0.0.1:7180/api/version
 v41
 ----
 
 ----
-tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+[root@6de36c33185f /]# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 ----
