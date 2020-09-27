@@ -22,6 +22,7 @@ chmod +x ./centosvmCDP.sh; \
 #sudo buildah commit centos-working-container-1 marccdp"
 #sudo  podman push localhost/marccdp  quay.io/marcf5/marccdp
 
+#sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp2 localhost/marccdp:latest /sbin/init
 #sudo podman run --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /sbin/init
 
 #sudo podman ps -a 
