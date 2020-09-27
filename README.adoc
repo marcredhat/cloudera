@@ -1,22 +1,22 @@
 
-== Run Cloudera trial environment in a dockerless container using podman
+== Build and run a Cloudera trial environment in a dockerless container
 
 Based on https://github.com/carrossoni/CDPDCTrial/
 
 ----
-Intro
+We'll use 
+buildah to create the Cloudera trial environment container and
+podman to run it
+
+Buildah is a command-line tool for building Open Container Initiative-compatible 
+(that means Docker- and Kubernetes-compatible, too) images quickly and easily. 
+Buildah is easy to incorporate into scripts and build pipelines and 
+doesn’t require a running container daemon to build its image.
+See more at https://opensource.com/article/18/6/getting-started-buildah
 ----
 
-----
-Build the awx-cli container using buildah:
-ubicontainer=$(buildah from registry.access.redhat.com/ubi8/ubi-minimal:latest)
-export CONTAINER_FS=$(buildah mount)
-buildah run $ubicontainer microdnf update -y && \
-buildah run $ubicontainer microdnf  install python3-pip -y && \
-buildah run $ubicontainer  pip3 install https://releases.ansible.com/ansible-tower/cli/ansible-tower-cli-latest.tar.gz && \
-buildah config --cmd /bin/bash ${ubicontainer} && \
-buildah run $ubicontainer -- sh -c "awx --help"
-----
+
+The buildah script to create the container is at https://github.com/marcredhat/cloudera/blob/master/build.sh
 
 
 ----
