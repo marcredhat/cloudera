@@ -37,10 +37,12 @@ on your laptop, virtual machine or baremetal server using CodeReady Containers
 See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
 https://github.com/marcredhat/crcdemos/blob/master/yunikorn/README.adoc
 
+
+----
 YuniKorn brings a unified, cross-platform scheduling experience for mixed workloads 
 consisting of stateless batch workloads and stateful services, 
 with support for, but not limited to, YARN and Kubernetes.
-
+----
 
 ----
 Buildah is a command-line tool for building Open Container Initiative-compatible 
