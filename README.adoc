@@ -1,6 +1,9 @@
 
 == Build and run a Cloudera trial environment in a dockerless container
 
+== Automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
+on your laptop, virtual machine or baremetal server using CodeReady Containers
+
 Based on https://github.com/carrossoni/CDPDCTrial/
 
 ----
@@ -31,7 +34,7 @@ from the CDP Private Cloud Management Console.
 image:images/cloudera2.png[title="Cloudera 2"]
 
 
-NOTE: You can automate the install of OpenShift 4.5 with YuniKorn scheduler for BigData and ML 
+NOTE: You can automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
 on your laptop, virtual machine or baremetal server using CodeReady Containers
 
 See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
