@@ -16,7 +16,7 @@ See https://www.cloudera.com/products/cloudera-data-platform/cdp-private-cloud.h
 image:images/cloudera1.png[title="Cloudera 1"]
 
 ----
-The trial environment includes a  wizard that provides 
+The trial environment also includes a  wizard that provides 
 step-by-step guidance for installing CDP Private Cloud components onto an existing on-premises Kubernetes cluster. 
 
 After the installation, you can manage your 
