@@ -31,3 +31,20 @@ chmod +x ./centosvmCDP.sh; \
 
 #[root@6de36c33185f /]# find / -name create_cluster.py
 #/CDPDCTrial/scripts/create_cluster.py
+
+
+
+#su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+#su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
+
+#sudo podman exec -it marccdp /bin/bash
+
+#ss -anpt | grep java | grep LISTEN
+#LISTEN     0      50           *:7180                     *:*                   users:(("java",pid=14718,fd=400))
+#LISTEN     0      50           *:7182                     *:*                   users:(("java",pid=14718,fd=392))
+
+#systemctl status cloudera-scm-agent
+#systemctl status cloudera-scm-server 
+#curl -u "admin:admin"  http://127.0.0.1:7180/api/version
+#v41
+# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
