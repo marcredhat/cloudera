@@ -52,10 +52,10 @@ Start all systemd services that are installed and enabled within the container, 
 Allow systemd to restart services or kill zombie processes for services started within the container.
 The general steps for building a container that is ready to be used as a systemd services is:
 
-Install the package containing the systemd-enabled service inside the container. This can include dozens of services that come with RHEL, such as Apache Web Server (httpd), FTP server (vsftpd), Proxy server (squid), and many others. For this example, we simply install an Apache (httpd) Web server.
-The httpd and vsftpd packages are included in the UBI repositories. You would need a RHEL subscription to install the squid package.
+Install the package containing the systemd-enabled service inside the container.
+
 Use the systemctl command to enable the service inside the container.
-Add data for the service to use in the container (in this example, we add a Web server test page). For a real deployment, you would probably connect to outside storage.
+
 Expose any ports needed to access the service.
 ----
 
