@@ -40,30 +40,61 @@ sudo podman  login -u="<quay.io user>" -p="<quay.io encrypted password>" quay.io
 sudo  podman push localhost/marccdp  quay.io/marcf5/marccdp
 ----
 
-#sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp2 localhost/marccdp:latest /sbin/init
-#sudo podman run --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /sbin/init
+----
+Starting services within the container using systemd
+(from https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/building_running_and_managing_containers/using-systemd-with-containers_building-running-and-managing-containers)
 
-#sudo podman ps -a 
-#sudo podman exec -it marccdp /bin/bash
+Applications created to be managed with systemd can be started and managed inside a container. 
+A container running systemd will:
 
-#systemctl start cloudera-scm-server
+Start the /sbin/init process (the systemd service) to run as PID 1 within the container.
+Start all systemd services that are installed and enabled within the container, in order of dependencies.
+Allow systemd to restart services or kill zombie processes for services started within the container.
+The general steps for building a container that is ready to be used as a systemd services is:
+
+Install the package containing the systemd-enabled service inside the container. This can include dozens of services that come with RHEL, such as Apache Web Server (httpd), FTP server (vsftpd), Proxy server (squid), and many others. For this example, we simply install an Apache (httpd) Web server.
+The httpd and vsftpd packages are included in the UBI repositories. You would need a RHEL subscription to install the squid package.
+Use the systemctl command to enable the service inside the container.
+Add data for the service to use in the container (in this example, we add a Web server test page). For a real deployment, you would probably connect to outside storage.
+Expose any ports needed to access the service.
+----
+
+----
+sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /sbin/init
+----
+
+----
+sudo podman exec -it marccdp /bin/bash
+----
+
+----
+systemctl start cloudera-scm-server
 
 #[root@6de36c33185f /]# find / -name create_cluster.py
 #/CDPDCTrial/scripts/create_cluster.py
+----
 
-
-
+----
 #su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
 #su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
+----
 
-#sudo podman exec -it marccdp /bin/bash
-
-#ss -anpt | grep java | grep LISTEN
+----
+ss -anpt | grep java | grep LISTEN
 #LISTEN     0      50           *:7180                     *:*                   users:(("java",pid=14718,fd=400))
 #LISTEN     0      50           *:7182                     *:*                   users:(("java",pid=14718,fd=392))
+----
 
-#systemctl status cloudera-scm-agent
-#systemctl status cloudera-scm-server 
-#curl -u "admin:admin"  http://127.0.0.1:7180/api/version
-#v41
-# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+----
+systemctl status cloudera-scm-agent
+systemctl status cloudera-scm-server 
+----
+
+----
+curl -u "admin:admin"  http://127.0.0.1:7180/api/version
+v41
+----
+
+----
+tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+----
