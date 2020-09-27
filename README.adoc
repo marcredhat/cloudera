@@ -5,11 +5,25 @@ Based on https://github.com/carrossoni/CDPDCTrial/
 
 ----
 We'll use 
-buildah to create the Cloudera trial environment container and
+buildah to create the Cloudera CDP Private Cloud Base 
+(formerly known as CDP Data Center)
+trial environment container and
 podman to run it
 ----
 
+See https://www.cloudera.com/products/cloudera-data-platform/cdp-private-cloud.html
+
 image:images/cloudera1.png[title="Cloudera 1"]
+
+----
+The trial environment includes a  wizard that provides 
+step-by-step guidance for installing CDP Private Cloud components onto an existing on-premises Kubernetes cluster. 
+
+After the installation, you can manage your 
+CDP Private Cloud environments and experiences 
+from the CDP Private Cloud Management Console.
+----
+
 
 image:images/cloudera2.png[title="Cloudera 2"]
 
