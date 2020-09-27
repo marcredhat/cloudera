@@ -31,6 +31,13 @@ from the CDP Private Cloud Management Console.
 image:images/cloudera2.png[title="Cloudera 2"]
 
 
+NOTE: You can automated the install of OpenShift 4.5 with Yunikorn scheduler for BigData and ML 
+on your laptop, virtual machine or baremetal server using CodeReady Containers
+
+See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
+https://github.com/marcredhat/crcdemos/blob/master/yunikorn/README.adoc
+
+
 ----
 Buildah is a command-line tool for building Open Container Initiative-compatible 
 (that means Docker- and Kubernetes-compatible, too) images quickly and easily. 
