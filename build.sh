@@ -1,7 +1,7 @@
 podmancdp=$(buildah from registry.centos.org/centos/centos:latest)
 CONTAINER_FS=$(buildah mount $podmancdp)
 buildah run $podmancdp yum update -y && \
-buildah run $podmancdp yum  install  sudo git udisks2 -y && \
+buildah run $podmancdp yum  install  sudo git udisks2 openssh-server openssh-clients -y && \
 
 
 buildah config  --cmd /bin/bash ${podmancdp}  && \
