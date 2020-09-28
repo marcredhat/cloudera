@@ -246,4 +246,9 @@ To create an image from the backup file that was made above, you do it with the 
 podman load -i marccdpconfigured.tar
 ----
 
+----
+You can also upload the image to your favorite registry
+sudo podman push localhost/marccdpconfigured  quay.io/marcf5/marccdpconfigured
+----
+
 See more on backup and restore with podman at https://fedoramagazine.org/backup-and-restore-toolboxes-with-podman/
