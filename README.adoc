@@ -68,20 +68,20 @@ Let's have a look at the container created by the script above
 
 sudo buildah containers
 CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
-ed92c18b5b99     *     f142359e2130 registry.centos.org/centos/centos:latest centos-working-container-1
+82ebfa94f1ea     *     f142359e2130 registry.centos.org/centos/ce... centos-working-container
 ----
 
 ----
 Commit the container to a new image
 
-sudo buildah commit centos-working-container-1 marccdp
+sudo buildah commit centos-working-container marccdp
 ----
 
 ----
 Publish the container to your favorite registry
 
 sudo podman  login -u="<quay.io user>" -p="<quay.io encrypted password>" quay.io
-sudo  podman push localhost/marccdp  quay.io/marcf5/marccdp
+sudo podman push localhost/marccdp  quay.io/marcf5/marccdp
 ----
 
 ----
