@@ -200,22 +200,7 @@ v41
 [root@6de36c33185f /]# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 ----
 
-----
-[root@cloudera /]# cat ~/myRSAkey.pub >> ~/.ssh/authorized_keys
-[root@cloudera /]# chmod 400 ~/.ssh/authorized_keys
-[root@cloudera /]# ssh-keyscan -H `hostname` >> ~/.ssh/known_hosts
-# cloudera:22 SSH-2.0-OpenSSH_7.4
-# cloudera:22 SSH-2.0-OpenSSH_7.4
-# cloudera:22 SSH-2.0-OpenSSH_7.4
-[root@cloudera /]# sed -i 's/.*PermitRootLogin.*/PermitRootLogin without-password/' /etc/ssh/sshd_config
-[root@cloudera /]# systemctl restart sshd
-----
 
-----
-Save the private key ~/myRSAkey in a file on your laptop. 
-
-You'll use in a future step when adding the host to Cloudera Manager.
-----
 
 ----
 If you are installing CDP on a baremetal server and you SSH into it from your laptop,
