@@ -104,17 +104,7 @@ Expose any ports needed to access the service.
 ----
 
 ----
-sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /bin/bash
-
-cat ~/myRSAkey.pub >> ~/.ssh/authorized_keys
-chmod 400 ~/.ssh/authorized_keys
-ssh-keyscan -H `hostname` >> ~/.ssh/known_hosts
-sed -i 's/.*PermitRootLogin.*/PermitRootLogin without-password/' /etc/ssh/sshd_config
-
-
 sudo podman run  -p 7180:7180 --systemd=true --privileged  -it --name marccdp localhost/marccdp:latest /sbin/init
-
-systemctl restart sshd
 ----
 
 ----
