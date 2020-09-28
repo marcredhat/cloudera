@@ -16,6 +16,8 @@ and
 podman to run the Cloudera CDP Private Cloud Base container
 ----
 
+NOTE: We'll also show how to backup and restore your CDP containers so that you can start a pre-configured CDP lab very quickly (few minutes)
+
 See https://www.cloudera.com/products/cloudera-data-platform/cdp-private-cloud.html
 
 image:images/cloudera3.png[title="Cloudera 3"]
