@@ -226,3 +226,10 @@ ssh root@<baremetal server> -L 7180:localhost:7180
 
 On your laptop, browse to http://localhost:7180 and connect as admin/admin
 image:images/cloudera4.png[title="Cloudera 4"]
+
+
+image:images/cloudera5.png[title="Cloudera 5"]
+
+Click on "Cloudera Manager" (top left corner)
+
+
