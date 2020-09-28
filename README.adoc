@@ -64,6 +64,10 @@ chmod +x ./build.sh
 ----
 
 ----
+Ignore errors displayed by the build.sh script; they are expected as we have not yet configured databases and services 
+----
+
+----
 Let's have a look at the container created by the script above
 
 sudo buildah containers
