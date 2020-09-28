@@ -228,7 +228,7 @@ image:images/cloudera13.png[title="Cloudera 13"]
 == Create an image of your CDP container
 
 ----
-podman container stop
+podman container stop marccdp
 
 podman container commit -p marccdp marccdpconfigured
 
