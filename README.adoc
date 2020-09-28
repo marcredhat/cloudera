@@ -225,4 +225,20 @@ image:images/cloudera12.png[title="Cloudera 12"]
 And voilà
 image:images/cloudera13.png[title="Cloudera 13"]
 
+== Create an image of your CDP container
 
+----
+podman container stop
+
+podman container commit -p marccdp marccdpconfigured
+
+podman save -o marccdpconfigured.tar marccdpconfigured
+----
+
+----
+To create an image from the backup file that was made above, you do it with the command podman load -i backup_filename.
+
+podman load -i marccdpconfigured.tar
+----
+
+See more on backup and restore with podman at https://fedoramagazine.org/backup-and-restore-toolboxes-with-podman/
