@@ -152,6 +152,16 @@ Create the folder /var/lib/postgres/data
 [root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
 [root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
 
+
+[root@6de36c33185f /]# sudo -u postgres psql <<EOF 
+CREATE DATABASE ranger;
+CREATE USER ranger WITH PASSWORD 'cloudera';
+GRANT ALL PRIVILEGES ON DATABASE ranger TO ranger;
+CREATE DATABASE das;
+CREATE USER das WITH PASSWORD 'cloudera';
+GRANT ALL PRIVILEGES ON DATABASE das TO das;
+EOF
+
 [root@6de36c33185f /]# find / -name create_cluster.py
 /CDPDCTrial/scripts/create_cluster.py
 
