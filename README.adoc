@@ -230,6 +230,6 @@ image:images/cloudera4.png[title="Cloudera 4"]
 
 image:images/cloudera5.png[title="Cloudera 5"]
 
-Click on "Continue" than on "Cloudera Manager" (top left corner)
+Click on "Continue" then on "Cloudera Manager" (top left corner)
 
 
