@@ -230,7 +230,8 @@ image:images/cloudera13.png[title="Cloudera 13"]
 ----
 podman container stop marccdp
 
-podman container commit -p marccdp marccdpconfigured
+Choose a tmpdir where you have sufficient disk space
+podman container commit -p marccdp marccdpconfigured --tmpdir=/home
 
 podman save -o marccdpconfigured.tar marccdpconfigured
 ----
