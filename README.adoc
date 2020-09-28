@@ -115,6 +115,7 @@ as shown at https://github.com/marcredhat/CDPDCTrial/blob/master/centosvmCDP.sh
 In a new terminal window,
 sudo podman exec -it marccdp /bin/bash
 
+[root@036bfc743a56 data]# hostname cloudera
 
 [root@036bfc743a56 data]# service cloudera-scm-agent restart
 
@@ -141,8 +142,9 @@ Executing:  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el7_8.x86_64/bin/jav
 [                          main] DbCommandExecutor              INFO  Successfully connected to database.
 All done, your SCM database is configured correctly!
 
-Examples:
-[root@6de36c33185f /]# systemctl start cloudera-scm-server
+Create the folder /var/lib/postgres/data
+
+[root@6de36c33185f /]# chown -R postgres /var/lib/postgres/data
 [root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
 [root@6de36c33185f /]# su - postgres -c "/usr/pgsql-9.6/bin/pg_ctl -D /var/lib/postgres/data -l logfile start"
 
