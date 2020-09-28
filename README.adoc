@@ -41,6 +41,9 @@ on your laptop, virtual machine or baremetal server using CodeReady Containers
 See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
 https://github.com/marcredhat/crcdemos/blob/master/yunikorn/README.adoc
 
+NOTE: Another option is to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes) on a baremetal server with KVM/libvirt; please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the "Install OpenShift 4" paragraph.
+
+
 
 ----
 YuniKorn brings a unified, cross-platform scheduling experience for mixed workloads 
