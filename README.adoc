@@ -179,6 +179,17 @@ v41
 ----
 
 ----
+[root@cloudera /]# cat ~/myRSAkey.pub >> ~/.ssh/authorized_keys
+[root@cloudera /]# chmod 400 ~/.ssh/authorized_keys
+[root@cloudera /]# ssh-keyscan -H `hostname` >> ~/.ssh/known_hosts
+# cloudera:22 SSH-2.0-OpenSSH_7.4
+# cloudera:22 SSH-2.0-OpenSSH_7.4
+# cloudera:22 SSH-2.0-OpenSSH_7.4
+[root@cloudera /]# sed -i 's/.*PermitRootLogin.*/PermitRootLogin without-password/' /etc/ssh/sshd_config
+[root@cloudera /]# systemctl restart sshd
+----
+
+----
 If you are installing CDP on a baremetal server and you SSH into it from your laptop,
 you can use port forwarding as follows:
 
