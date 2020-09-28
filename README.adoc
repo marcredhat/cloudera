@@ -124,8 +124,10 @@ sudo podman exec -it marccdp /bin/bash
 In /etc/hosts, map the IP address of the CDP container to the "cloudera" hostname as follows:
 <IP address of the CDP container>       cloudera
 
-In /etc/cloudera-scm-agent/config.ini, replace the value for listening_ip with the IP address of the CDP container
+In /etc/cloudera-scm-agent/config.ini, replace the value for listening_ip with the IP address of the CDP container:
 listening_ip=<IP address of the CDP container>
+In /etc/cloudera-scm-agent/config.ini, replace the value for server_host with cloudera:
+server_host=cloudera
 
 [root@036bfc743a56 data]# service cloudera-scm-agent restart
 
