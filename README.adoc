@@ -252,3 +252,27 @@ sudo podman push localhost/marccdpconfigured  quay.io/marcf5/marccdpconfigured
 ----
 
 See more on backup and restore with podman at https://fedoramagazine.org/backup-and-restore-toolboxes-with-podman/
+
+----
+When you restart your CDP container (podman container start marccdp) or
+you restore it from a backup, make sure that:
+
+1. You connect to the CDP container sudo podman exec -it marccdp /bin/bash
+and write down its new IP address ("ip a" command)
+
+The following actions (2 to 5) changes are to be made from inside the CDP container.
+
+2. Set the hostname to cloudera ("hostname cloudera" command)
+
+3. Ensure /etc/hosts has the following line: 
+
+<IP address of CDP container>  cloudera
+
+4. Ensure /etc/cloudera-scm-agent/config.ini has the following lines:
+server_host=cloudera
+listening_ip=<IP address of CDP container>
+
+5. Restart the Cloudera SCM agent and server 
+[root@774251cd0772 /]# systemctl restart cloudera-scm-server
+[root@774251cd0772 /]# systemctl restart cloudera-scm-agent
+----
