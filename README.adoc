@@ -5,6 +5,21 @@
 
 Based on https://github.com/carrossoni/CDPDCTrial/
 
+== Lab goals
+
+----
+The goal of this lab is :
+1. automate and speed up the installation of CDP Private Cloud Base (formerly known as CDP Data Center)
+2. automate the install of OpenShift 4.5+
+3. deploy CDP Private Cloud components onto an existing on-premises OpenShift 4.5+ / Kubernetes cluster.
+*** on a single baremetal server or laptop *** 
+
+The ideal environment for this is a baremetal server with 32+ GBU RAM, 32 logical cores, RHEL 8.2+ or CentOS 7.8+.
+
+You can also run all this on a laptop with 16+ GB RAM but the experience will be less nice;)
+
+----
+
 ----
 We'll use 
 buildah to create the Cloudera CDP Private Cloud Base 
