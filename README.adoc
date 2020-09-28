@@ -173,3 +173,13 @@ v41
 ----
 [root@6de36c33185f /]# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 ----
+
+----
+If you are installing CDP on a baremetal server and you SSH into it from your laptop,
+you can use port forwarding as follows:
+
+ssh root@<baremetal server> -L 7180:localhost:7180
+----
+
+On your laptop, browse to http://localhost:7180 and connect as admin/admin
+image:images/cloudera4.png[title="Cloudera 4"]
