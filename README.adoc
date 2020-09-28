@@ -112,7 +112,34 @@ We can now connect to the Cloudera trial environment container and
 configure databases, enable service etc
 as shown at https://github.com/marcredhat/CDPDCTrial/blob/master/centosvmCDP.sh
 
+In a new terminal window,
 sudo podman exec -it marccdp /bin/bash
+
+
+[root@036bfc743a56 data]# service cloudera-scm-agent restart
+
+[root@036bfc743a56 data]#systemctl start cloudera-scm-server
+
+[root@036bfc743a56 data]#systemctl daemon-reload
+
+[root@036bfc743a56 data]#systemctl start rngd
+
+[root@036bfc743a56 data]#systemctl enable rngd
+
+[root@036bfc743a56 data]# mysql -u root < /CDPDCTrial/scripts/create_db.sql
+
+[root@036bfc743a56 data]# mysql -u root < /CDPDCTrial/scripts/secure_mariadb.sql
+
+Check the logs
+[root@036bfc743a56 data]# tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+
+[root@036bfc743a56 data]# /opt/cloudera/cm/schema/scm_prepare_database.sh mysql scm scm cloudera
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el7_8.x86_64
+Verifying that we can write to /etc/cloudera-scm-server
+Creating SCM configuration file in /etc/cloudera-scm-server
+Executing:  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el7_8.x86_64/bin/java -cp /usr/share/java/mysql-connector-java.jar:/usr/share/java/oracle-connector-java.jar:/usr/share/java/postgresql-connector-java.jar:/opt/cloudera/cm/schema/../lib/* com.cloudera.enterprise.dbutil.DbCommandExecutor /etc/cloudera-scm-server/db.properties com.cloudera.cmf.db.
+[                          main] DbCommandExecutor              INFO  Successfully connected to database.
+All done, your SCM database is configured correctly!
 
 Examples:
 [root@6de36c33185f /]# systemctl start cloudera-scm-server
