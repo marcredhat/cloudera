@@ -218,3 +218,11 @@ image:images/cloudera5.png[title="Cloudera 5"]
 Click on "Continue" then on "Cloudera Manager" (top left corner)
 
 
+The parcel download and distribution takes a long time, click on "Parcels" to monitor progress
+image:images/cloudera12.png[title="Cloudera 12"]
+
+
+And voilà
+image:images/cloudera13.png[title="Cloudera 13"]
+
+
