@@ -227,6 +227,10 @@ image:images/cloudera13.png[title="Cloudera 13"]
 
 == Create an image of your CDP container
 
+
+NOTE: Current podman can't change tmpdir from /var/tmp to any other directory. See https://access.redhat.com/solutions/5413281
+
+
 ----
 podman container stop marccdp
 
