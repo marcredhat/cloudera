@@ -190,6 +190,12 @@ v41
 ----
 
 ----
+Save the private key ~/myRSAkey in a file on your laptop. 
+
+You'll use in a future step when adding the host to Cloudera Manager.
+----
+
+----
 If you are installing CDP on a baremetal server and you SSH into it from your laptop,
 you can use port forwarding as follows:
 
