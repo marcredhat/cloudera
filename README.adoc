@@ -119,6 +119,8 @@ as shown at https://github.com/marcredhat/CDPDCTrial/blob/master/centosvmCDP.sh
 In a new terminal window,
 sudo podman exec -it marccdp /bin/bash
 
+Check that DNS resolution works inside the container
+
 [root@036bfc743a56 data]# hostname cloudera
 
 In /etc/hosts, map the IP address of the CDP container to the "cloudera" hostname as follows:
