@@ -6,6 +6,9 @@
 Based on https://github.com/carrossoni/CDPDCTrial/
 
 
+Video demo: https://www.youtube.com/watch?v=6RE2Mc3ei5Y
+
+
 == Lab goals
 
 ----
