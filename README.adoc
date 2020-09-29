@@ -1,7 +1,8 @@
 
 == Build and run a Cloudera CDP Private Cloud Base (formerly known as CDP Data Center) trial environment in a dockerless container
 
-== Automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML on your laptop, virtual machine or baremetal server 
+== Automate the install of Cloudera CDP, OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
+   on your laptop, virtual machine or baremetal server 
 
 Based on https://github.com/carrossoni/CDPDCTrial/
 
