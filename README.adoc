@@ -211,7 +211,7 @@ EOF
 
 In /CDPDCTrial/scripts/create_cluster.py, replace 10.0.2.15 with the IP address of your Cloudera container
 
-[root@6de36c33185f /]# python /CDPDCTrial/scripts/create_cluster.py /CDPDCTrial/conf/cdpsandbox.json
+[root@6de36c33185f /]# python /CDPDCTrial/scripts/create_cluster.py /CDPDCTrial/conf/cdpsandbox.json &
 ----
 
 ----
