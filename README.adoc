@@ -92,6 +92,8 @@ See more at https://opensource.com/article/18/6/getting-started-buildah
 The buildah script to create the container is at https://github.com/marcredhat/cloudera/blob/master/build.sh
 
 ----
+dnf -y update
+dnf -y install buildah podman
 curl -L https://raw.githubusercontent.com/marcredhat/cloudera/master/build.sh -o build.sh
 chmod +x ./build.sh
 ./build.sh
