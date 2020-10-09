@@ -36,6 +36,10 @@ You can also run all this on a laptop with 16+ GB RAM but the experience will be
 
 ----
 
+
+== Build and run a Cloudera CDP Private Cloud Base (formerly known as CDP Data Center) trial environment in a dockerless container
+
+
 ----
 We'll use 
 buildah to create the Cloudera CDP Private Cloud Base 
@@ -64,23 +68,6 @@ from the CDP Private Cloud Management Console.
 
 
 image:images/cloudera2.png[title="Cloudera 2"]
-
-
-NOTE: You can automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
-on your laptop, virtual machine or baremetal server using CodeReady Containers
-
-See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
-https://github.com/marcredhat/crcdemos/blob/master/yunikorn/README.adoc
-
-NOTE: Another option is to fully automate the installation of OpenShift 4.5+ (for lab/test purposes) on a baremetal server with KVM/libvirt; please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the "Install OpenShift 4" paragraph.
-
-
-
-----
-YuniKorn brings a unified, cross-platform scheduling experience for mixed workloads 
-consisting of stateless batch workloads and stateful services, 
-with support for, but not limited to, YARN and Kubernetes.
-----
 
 ----
 Buildah is a command-line tool for building Open Container Initiative-compatible 
@@ -313,4 +300,26 @@ listening_ip=<IP address of CDP container>
 5. Restart the Cloudera SCM agent and server 
 [root@774251cd0772 /]# systemctl restart cloudera-scm-server
 [root@774251cd0772 /]# systemctl restart cloudera-scm-agent
+----
+
+
+== Automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
+
+
+See https://github.com/marcredhat/crcdemos/blob/master/yunikorn/baremetal_README.adoc
+
+NOTE: You can automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
+on your laptop, virtual machine or baremetal server using CodeReady Containers
+
+See https://issues.apache.org/jira/browse/YUNIKORN-422 and 
+https://github.com/marcredhat/crcdemos/blob/master/yunikorn/README.adoc
+
+NOTE: Another option is to fully automate the installation of OpenShift 4.5+ (for lab/test purposes) on a baremetal server with KVM/libvirt; please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the "Install OpenShift 4" paragraph.
+
+
+
+----
+YuniKorn brings a unified, cross-platform scheduling experience for mixed workloads 
+consisting of stateless batch workloads and stateful services, 
+with support for, but not limited to, YARN and Kubernetes.
 ----
