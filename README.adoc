@@ -306,6 +306,16 @@ listening_ip=<IP address of CDP container>
 ----
 
 
+For container migration best practices, please see 
+
+https://www.redhat.com/cms/managed-files/mi-best-practices-container-migration-ebook-f9195kc-201710-en_2.pdf
+
+Additional detailed practical examples: 
+
+https://crunchtools.com/moving-linux-services-to-containers. 
+
+
+
 == Automate the install of OpenShift 4.5+ with YuniKorn scheduler for BigData and ML 
 
 
